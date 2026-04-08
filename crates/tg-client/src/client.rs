@@ -83,6 +83,21 @@ impl TelegramClient {
 
     /// Send a text message by @username
     pub async fn send_message_to(&self, username: &str, text: &str) -> Result<i32> {
+        // "me" / "self" / "saved" → send to Saved Messages via InputPeerSelf
+        if username == "me" || username == "self" || username == "saved" {
+            let self_ref: grammers_session::types::PeerRef =
+                grammers_tl_types::types::InputPeerSelf {}.into();
+
+            let sent = self
+                .client
+                .send_message(self_ref, text)
+                .await
+                .context("Failed to send to Saved Messages")?;
+
+            info!("Message sent to Saved Messages (id={})", sent.id());
+            return Ok(sent.id());
+        }
+
         let peer = self
             .client
             .resolve_username(username)
