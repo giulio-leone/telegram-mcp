@@ -1,0 +1,36 @@
+[package]
+name = "tg-mcp-server"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tg-client = { path = "../tg-client" }
+tg-domain = { path = "../domain" }
+grammers-client = "0.9"
+anyhow.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+chrono.workspace = true
+
+[[bin]]
+name = "tg-pair"
+path = "src/bin/tg_pair.rs"
+
+[[bin]]
+name = "tg-send"
+path = "src/bin/tg_send.rs"
+
+[[bin]]
+name = "tg-broadcast"
+path = "src/bin/tg_broadcast.rs"
+
+[[bin]]
+name = "tg-track"
+path = "src/bin/tg_track.rs"
+
+[[bin]]
+name = "tg-poll"
+path = "src/bin/tg_poll.rs"

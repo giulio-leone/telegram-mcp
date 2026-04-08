@@ -1,0 +1,17 @@
+[package]
+name = "tg-client"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+grammers-client = "0.9"
+grammers-session = "0.9"
+grammers-mtsender = "0.9"
+grammers-tl-types = "0.9"
+anyhow.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+chrono.workspace = true
+dirs = "6"
